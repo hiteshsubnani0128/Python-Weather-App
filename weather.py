@@ -20,14 +20,13 @@ def location():
     place = input("Search a Place : ").strip().lower()
     place  = place.replace(' ','%20')
     url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyDMIBY1H3RBPhmjLRO6zmh3-jWe9eJZZsc&address={}'.format(place)
-    print('url = ',url)
     page = requests.get(url)
     data = page.json()
     if data['status'] == 'OK':
         a = data['results']
         lat = a[0]['geometry']['location']['lat']
         lng = a[0]['geometry']['location']['lng']
-        print(lat,lng)
+        print("Processing.............")
         weather(lat,lng,place)
     else:
         print("Internet Not working Or Place Entered is wrong")
